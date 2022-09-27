@@ -2,7 +2,8 @@
 import '../auth/user.js';
 // > Part D import getUser and getProfiles from fetch-utils
 import { renderProfile } from '../render-utils.js';
-
+// import { getUser } from '../fetch-utils.js';
+// import { getProfile } from '../fetch-utils.js';
 const profileList = document.getElementById('profile-list');
 
 let error = null;
@@ -23,7 +24,6 @@ window.addEventListener('load', async () => {
 
 async function displayProfiles() {
     // > Part D: get the current user
-    const user = null; // ???
 
     for (const profile of profiles) {
         // > Part D:
