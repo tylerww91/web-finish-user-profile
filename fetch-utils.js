@@ -38,10 +38,14 @@ export async function updateProfile(profile) {
 
 export async function getProfile(id) {
     // > Part B: get profile by id, maybe single row returned
+    const response = await client.from('profiles').select('*').eq('id', id).maybeSingle();
+    console.log(response);
+    return response;
 }
 
 export async function getProfiles() {
     // > Part D: get all profiles (limit 100)
+    return await client.from('profiles').select().limit(100);
 }
 
 // TODO:

@@ -1,10 +1,10 @@
 import '../auth/user.js';
 // > Part A: import updateProfile from fetch-utils.js
-import { updateProfile } from '../fetch-utils.js';
+import { getProfile, updateProfile } from '../fetch-utils.js';
 // > Part B: import getUser and getProfile from fetch-utils.js
-
+import { getUser } from '../fetch-utils.js';
 // > Part B: get the user
-const user = null; // ???
+const user = getUser();
 
 const errorDisplay = document.getElementById('error-display');
 const profileForm = document.getElementById('profile-form');
@@ -20,6 +20,9 @@ window.addEventListener('load', async () => {
     //      - get the profile based on user.id
     //      - set profile and error state from response object
 
+    const response = await getProfile(user.id);
+    error = response.error;
+    profile = response.data; //this is key, console log the response to make sure what should be typed after the'.'
     if (error) {
         displayError();
     }
@@ -72,6 +75,8 @@ profileForm.addEventListener('submit', async (e) => {
 
 function displayProfile() {
     // > Part B: update user name and bio from profile object
+    userNameInput.value = profile.user_name;
+    bioTextArea.value = profile.bio;
 }
 
 function displayError() {
